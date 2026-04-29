@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simple 3D Cube</title>
-</head> 
+    <title>Build your own 3D renderer</title>
+</head>
 <body>
 <canvas id="canvas" width="600" height="600"></canvas>
 
@@ -10,66 +10,121 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-let angle = 0;
+const width = canvas.width;
+const height = canvas.height;
 
-// Куб (8 вершин)
-const vertices = [
-    [-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],
-    [-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]
+const spheres = [
+    {x:0, y:0, z:3, r:1, color:[255,0,0]},
+    {x:2, y:0, z:4, r:1, color:[0,255,0]},
+    {x:-2, y:0, z:4, r:1, color:[0,0,255]}
 ];
 
-// Рёбра куба
-const edges = [
-    [0,1],[1,2],[2,3],[3,0],
-    [4,5],[5,6],[6,7],[7,4],
-    [0,4],[1,5],[2,6],[3,7]
-];
+const light = {x:5, y:5, z:-10};
 
-// Вращение по Y
-function rotateY([x,y,z]) {
-    return [
-        x * Math.cos(angle) - z * Math.sin(angle),
-        y,
-        x * Math.sin(angle) + z * Math.cos(angle)
-    ];
+function normalize(v){
+    const len = Math.sqrt(v.x*v.x+v.y*v.y+v.z*v.z);
+    return {x:v.x/len,y:v.y/len,z:v.z/len};
 }
 
-// Простая перспектива
-function project(x, y, z) {
-    const distance = 3;
-    const factor = distance / (distance + z);
-
-    return [
-        x * factor * 200 + canvas.width / 2,
-        y * factor * 200 + canvas.height / 2
-    ];
+function dot(a,b){
+    return a.x*b.x+a.y*b.y+a.z*b.z;
 }
 
-// Линия
-function line(x1,y1,x2,y2) {
-    ctx.beginPath();
-    ctx.moveTo(x1,y1);
-    ctx.lineTo(x2,y2);
-    ctx.stroke();
+function intersect(ray, sphere){
+    const oc = {
+        x:ray.x - sphere.x,
+        y:ray.y - sphere.y,
+        z:ray.z - sphere.z
+    };
+
+    const a = dot(ray.dir, ray.dir);
+    const b = 2 * dot(oc, ray.dir);
+    const c = dot(oc, oc) - sphere.r*sphere.r;
+
+    const d = b*b - 4*a*c;
+    if(d < 0) return null;
+
+    return (-b - Math.sqrt(d)) / (2*a);
 }
 
-// Рендер
-function render() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+// рендер
+function render(){
+    const img = ctx.createImageData(width,height);
 
-    const projected = vertices.map(v => {
-        const r = rotateY(v);
-        return project(r[0], r[1], r[2]);
-    });
+    for(let y=0;y<height;y++){
+        for(let x=0;x<width;x++){
 
-    edges.forEach(([a,b]) => {
-        const p1 = projected[a];
-        const p2 = projected[b];
-        line(p1[0], p1[1], p2[0], p2[1]);
-    });
+            const nx = (x-width/2)/width;
+            const ny = (y-height/2)/height;
 
-    angle += 0.02;
-    requestAnimationFrame(render);
+            const ray = {
+                x:0, y:0, z:0,
+                dir: normalize({x:nx,y:ny,z:1})
+            };
+
+            let closest = Infinity;
+            let hit = null;
+
+            for(const s of spheres){
+                const t = intersect(ray,s);
+                if(t && t < closest){
+                    closest = t;
+                    hit = s;
+                }
+            }
+
+            let index = (y*width + x)*4;
+
+            if(hit){
+
+                const px = ray.dir.x * closest;
+                const py = ray.dir.y * closest;
+                const pz = ray.dir.z * closest;
+
+                const normal = normalize({
+                    x:px - hit.x,
+                    y:py - hit.y,
+                    z:pz - hit.z
+                });
+
+                const lightDir = normalize({
+                    x:light.x - px,
+                    y:light.y - py,
+                    z:light.z - pz
+                });
+
+                let brightness = Math.max(0, dot(normal, lightDir));
+
+                // тень
+                let shadow = false;
+
+                for(const s of spheres){
+                    if(s === hit) continue;
+                    const shadowRay = {x:px,y:py,z:pz,dir:lightDir};
+                    const t = intersect(shadowRay,s);
+                    if(t){
+                        shadow = true;
+                        break;
+                    }
+                }
+
+                if(shadow) brightness *= 0.3;
+
+                img.data[index] = hit.color[0]*brightness;
+                img.data[index+1] = hit.color[1]*brightness;
+                img.data[index+2] = hit.color[2]*brightness;
+                img.data[index+3] = 255;
+
+            } else {
+                img.data[index] = 0;
+                img.data[index+1] = 0;
+                img.data[index+2] = 0;
+                img.data[index+3] = 255;
+            }
+        }
+    }
+
+    ctx.putImageData(img,0,0);
 }
 
 render();
