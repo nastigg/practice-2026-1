@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>3D Cube - JS</title>
+    <title>Simple 3D Cube</title>
 </head>
 <body>
-<canvas id="canvas" width="800" height="600"></canvas>
+<canvas id="canvas" width="600" height="600"></canvas>
 
 <script>
 const canvas = document.getElementById("canvas");
@@ -12,55 +12,67 @@ const ctx = canvas.getContext("2d");
 
 let angle = 0;
 
+// Куб (8 вершин)
 const vertices = [
     [-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],
     [-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]
 ];
 
+// Рёбра куба
 const edges = [
     [0,1],[1,2],[2,3],[3,0],
     [4,5],[5,6],[6,7],[7,4],
     [0,4],[1,5],[2,6],[3,7]
 ];
 
-function project([x,y,z]) {
-    // rotation Y
-    const xRot = x * Math.cos(angle) - z * Math.sin(angle);
-    const zRot = x * Math.sin(angle) + z * Math.cos(angle);
-
-    // perspective
-    const distance = 3;
-    const factor = distance / (distance - zRot);
-
-    const xProj = xRot * factor * 100 + canvas.width / 2;
-    const yProj = y * factor * 100 + canvas.height / 2;
-
-    return [xProj, yProj];
+// Вращение по Y
+function rotateY([x,y,z]) {
+    return [
+        x * Math.cos(angle) - z * Math.sin(angle),
+        y,
+        x * Math.sin(angle) + z * Math.cos(angle)
+    ];
 }
 
-function draw() {
-    ctx.fillStyle = "black";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
+// Простая перспектива
+function project(x, y, z) {
+    const distance = 3;
+    const factor = distance / (distance + z);
 
-    const projected = vertices.map(v => project(v));
+    return [
+        x * factor * 200 + canvas.width / 2,
+        y * factor * 200 + canvas.height / 2
+    ];
+}
 
-    ctx.strokeStyle = "white";
+// Линия
+function line(x1,y1,x2,y2) {
+    ctx.beginPath();
+    ctx.moveTo(x1,y1);
+    ctx.lineTo(x2,y2);
+    ctx.stroke();
+}
+
+// Рендер
+function render() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    const projected = vertices.map(v => {
+        const r = rotateY(v);
+        return project(r[0], r[1], r[2]);
+    });
 
     edges.forEach(([a,b]) => {
         const p1 = projected[a];
         const p2 = projected[b];
-
-        ctx.beginPath();
-        ctx.moveTo(p1[0], p1[1]);
-        ctx.lineTo(p2[0], p2[1]);
-        ctx.stroke();
+        line(p1[0], p1[1], p2[0], p2[1]);
     });
 
     angle += 0.02;
-    requestAnimationFrame(draw);
+    requestAnimationFrame(render);
 }
 
-draw();
+render();
 </script>
 </body>
 </html>
