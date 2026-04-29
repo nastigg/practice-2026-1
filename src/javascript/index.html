@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Cube - JS</title>
+</head>
+<body>
+<canvas id="canvas" width="800" height="600"></canvas>
 
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+let angle = 0;
+
+const vertices = [
+    [-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],
+    [-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]
+];
+
+const edges = [
+    [0,1],[1,2],[2,3],[3,0],
+    [4,5],[5,6],[6,7],[7,4],
+    [0,4],[1,5],[2,6],[3,7]
+];
+
+function project([x,y,z]) {
+    // rotation Y
+    const xRot = x * Math.cos(angle) - z * Math.sin(angle);
+    const zRot = x * Math.sin(angle) + z * Math.cos(angle);
+
+    // perspective
+    const distance = 3;
+    const factor = distance / (distance - zRot);
+
+    const xProj = xRot * factor * 100 + canvas.width / 2;
+    const yProj = y * factor * 100 + canvas.height / 2;
+
+    return [xProj, yProj];
+}
+
+function draw() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    const projected = vertices.map(v => project(v));
+
+    ctx.strokeStyle = "white";
+
+    edges.forEach(([a,b]) => {
+        const p1 = projected[a];
+        const p2 = projected[b];
+
+        ctx.beginPath();
+        ctx.moveTo(p1[0], p1[1]);
+        ctx.lineTo(p2[0], p2[1]);
+        ctx.stroke();
+    });
+
+    angle += 0.02;
+    requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+</body>
+</html>
