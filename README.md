@@ -14,6 +14,7 @@
 ## Вариативная часть задания
 
 Java / JavaScript: Build your own 3D renderer
+
 [Почитать о нем можно здесь.](https://avikdas.com/build-your-own-raytracer/)
 
 ## Ответственный по проектной (учебной) практике
