@@ -1,4 +1,4 @@
-#Build Your Own 3D Renderer (Java / JavaScript)
+# Build Your Own 3D Renderer (Java / JavaScript)
 
 ## О проекте
 Этот проект — пошаговое руководство по созданию собственного 3D-рендерера с нуля.
