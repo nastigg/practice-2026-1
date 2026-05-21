@@ -1,14 +1,3 @@
-/**
- * Материал объекта по модели Фонга.
- * <p>
- * Модель Фонга разбивает освещение на три составляющие:
- * ambient  = ka * ia                          (фоновый свет)
- * diffuse  = kd * id * (N · L)               (рассеянный свет)
- * specular = ks * is * (V · R)^shininess      (блик)
- * <p>
- * ka, kd, ks — коэффициенты (от 0 до 1)
- * color — базовый цвет объекта (RGB, каждый от 0 до 1)
- */
 public class Material {
     public final Vec3 color;      // базовый цвет
     public final double ka;       // коэффициент фонового освещения
