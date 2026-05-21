@@ -30,4 +30,18 @@ Ray Tracing (трассировка лучей) — это алгоритм ре
 -	Нормализация (normalize) — получение вектора единичной длины
 
 Пример вычисления нормали в точке на сфере:
-```Vec3 normal = point.sub(center).normalize();```
+```
+Vec3 normal = point.sub(center).normalize();
+```
+
+### Шаг 2 — Луч и камера
+
+Луч (Ray) описывается уравнением: P(t) = origin + t * direction, где t — вещественный параметр. Каждый пиксель изображения соответствует одному лучу, выпущенному из точки камеры.
+
+Перевод пикселя (px, py) в направление луча:
+```
+double ndcX = (2.0 * (px + 0.5) / WIDTH  - 1.0) * aspectRatio * scale;
+double ndcY = (1.0 - 2.0 * (py + 0.5) / HEIGHT) * scale;
+Vec3 direction = new Vec3(ndcX, ndcY, -1).normalize();
+```
+
