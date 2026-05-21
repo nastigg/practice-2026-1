@@ -1,33 +1,149 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Ресурсы</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ресурсы — Лаборатория успеха</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header> 
-    <h1>Ray Tracer Project</h1>
-    <nav>
-        <a href="index.html">Главная</a>
-        <a href="about.html">О проекте</a>
-        <a href="team.html">Участники</a>
-        <a href="journal.html">Журнал</a>
-        <a href="resources.html">Ресурсы</a>
-    </nav>
-</header>
+<nav>
+  <a class="nav-logo" href="index.html">Лаборатория <span>успеха</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="about.html">О проекте</a></li>
+    <li><a href="team.html">Участники</a></li>
+    <li><a href="journal.html">Журнал</a></li>
+    <li><a href="resources.html" class="active">Ресурсы</a></li>
+  </ul>
+</nav>
 
 <main>
-    <h2>Ресурсы</h2>
+  <div class="label">Ресурсы</div>
+  <h1>Полезные ссылки</h1>
+  <p class="subtitle">Инструменты и материалы для создания сайтов и веб-проектов.</p>
 
-    <ul>
-        <li><a href="https://avikdas.com/build-your-own-raytracer/">Tutorial</a></li>
-    </ul>
+  <h2>Обучение HTML и CSS</h2>
+  <div class="card" style="padding:8px 24px;">
+    <a href="https://developer.mozilla.org/ru/docs/Learn" target="_blank" class="resource-link">
+      <span class="resource-icon">📖</span>
+      <span class="resource-info">
+        <span class="resource-title">MDN Web Docs — Руководство для начинающих</span>
+        <span class="resource-desc">Официальная документация Mozilla. Лучшее место для изучения HTML, CSS и JavaScript с нуля.</span>
+      </span>
+      <span class="resource-arrow">↗</span>
+    </a>
+    <a href="https://htmlacademy.ru" target="_blank" class="resource-link">
+      <span class="resource-icon">🎓</span>
+      <span class="resource-info">
+        <span class="resource-title">HTML Academy</span>
+        <span class="resource-desc">Интерактивные курсы по вёрстке на русском языке. Подходит для полных новичков.</span>
+      </span>
+      <span class="resource-arrow">↗</span>
+    </a>
+    <a href="https://www.w3schools.com" target="_blank" class="resource-link">
+      <span class="resource-icon">🌐</span>
+      <span class="resource-info">
+        <span class="resource-title">W3Schools</span>
+        <span class="resource-desc">Справочник с примерами по HTML, CSS, JavaScript. Удобно для быстрого поиска синтаксиса.</span>
+      </span>
+      <span class="resource-arrow">↗</span>
+    </a>
+  </div>
+
+  <h2>Дизайн и прототипирование</h2>
+  <div class="card" style="padding:8px 24px;">
+    <a href="https://www.figma.com" target="_blank" class="resource-link">
+      <span class="resource-icon">🎨</span>
+      <span class="resource-info">
+        <span class="resource-title">Figma</span>
+        <span class="resource-desc">Главный инструмент для дизайна интерфейсов и прототипирования. Работает в браузере, бесплатно для студентов.</span>
+      </span>
+      <span class="resource-arrow">↗</span>
+    </a>
+    <a href="https://coolors.co" target="_blank" class="resource-link">
+      <span class="resource-icon">🎨</span>
+      <span class="resource-info">
+        <span class="resource-title">Coolors</span>
+        <span class="resource-desc">Генератор цветовых палитр. Помогает быстро подобрать гармоничную цветовую схему для сайта.</span>
+      </span>
+      <span class="resource-arrow">↗</span>
+    </a>
+    <a href="https://fonts.google.com" target="_blank" class="resource-link">
+      <span class="resource-icon">🔤</span>
+      <span class="resource-info">
+        <span class="resource-title">Google Fonts</span>
+        <span class="resource-desc">Бесплатные шрифты для веб-сайтов. Подключаются одной строкой кода.</span>
+      </span>
+      <span class="resource-arrow">↗</span>
+    </a>
+  </div>
+
+  <h2>Хостинг и публикация</h2>
+  <div class="card" style="padding:8px 24px;">
+    <a href="https://pages.github.com" target="_blank" class="resource-link">
+      <span class="resource-icon">🚀</span>
+      <span class="resource-info">
+        <span class="resource-title">GitHub Pages</span>
+        <span class="resource-desc">Бесплатный хостинг для статических сайтов. Именно на нём опубликован наш сайт-образец.</span>
+      </span>
+      <span class="resource-arrow">↗</span>
+    </a>
+    <a href="https://netlify.com" target="_blank" class="resource-link">
+      <span class="resource-icon">⚡</span>
+      <span class="resource-info">
+        <span class="resource-title">Netlify</span>
+        <span class="resource-desc">Простой деплой сайта перетаскиванием папки. Бесплатный тариф покрывает большинство учебных проектов.</span>
+      </span>
+      <span class="resource-arrow">↗</span>
+    </a>
+  </div>
+
+  <h2>Иконки и иллюстрации</h2>
+  <div class="card" style="padding:8px 24px;">
+    <a href="https://lucide.dev" target="_blank" class="resource-link">
+      <span class="resource-icon">✏️</span>
+      <span class="resource-info">
+        <span class="resource-title">Lucide Icons</span>
+        <span class="resource-desc">Открытый набор SVG-иконок. Минималистичный стиль, легко подключить в проект.</span>
+      </span>
+      <span class="resource-arrow">↗</span>
+    </a>
+    <a href="https://undraw.co" target="_blank" class="resource-link">
+      <span class="resource-icon">🖼️</span>
+      <span class="resource-info">
+        <span class="resource-title">unDraw</span>
+        <span class="resource-desc">Бесплатные SVG-иллюстрации для сайтов. Можно изменить цвет под свою палитру прямо на сайте.</span>
+      </span>
+      <span class="resource-arrow">↗</span>
+    </a>
+  </div>
+
+  <h2>Справочные материалы</h2>
+  <div class="card" style="padding:8px 24px;">
+    <a href="https://css-tricks.com" target="_blank" class="resource-link">
+      <span class="resource-icon">🛠️</span>
+      <span class="resource-info">
+        <span class="resource-title">CSS-Tricks</span>
+        <span class="resource-desc">Статьи и гайды по CSS: flexbox, grid, анимации и многое другое. Полезно на любом уровне.</span>
+      </span>
+      <span class="resource-arrow">↗</span>
+    </a>
+    <a href="https://caniuse.com" target="_blank" class="resource-link">
+      <span class="resource-icon">🔍</span>
+      <span class="resource-info">
+        <span class="resource-title">Can I use</span>
+        <span class="resource-desc">Проверяет, поддерживается ли та или иная CSS/JS-фича в разных браузерах.</span>
+      </span>
+      <span class="resource-arrow">↗</span>
+    </a>
+  </div>
+
 </main>
 
 <footer>
-    <p>© 2026 Ray Tracer Project</p>
+  <p>© 2026 Лаборатория успеха · Московский Политех · Куратор: Анохина Е.А. · Заказчик: ITE Group</p>
 </footer>
 
 </body>
