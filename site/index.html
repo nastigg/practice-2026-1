@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Ray Tracer Project</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Лаборатория успеха</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header> 
-    <h1>Ray Tracer Project</h1>
-    <nav>
-        <a href="index.html">Главная</a>
-        <a href="about.html">О проекте</a>
-        <a href="team.html">Участники</a>
-        <a href="journal.html">Журнал</a>
-        <a href="resources.html">Ресурсы</a>
-    </nav>
-</header>
+<nav>
+  <a class="nav-logo" href="index.html">Лаборатория <span>успеха</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Главная</a></li>
+    <li><a href="about.html">О проекте</a></li>
+    <li><a href="team.html">Участники</a></li>
+    <li><a href="journal.html">Журнал</a></li>
+    <li><a href="resources.html">Ресурсы</a></li>
+  </ul>
+</nav>
 
 <main>
-    <h2>Аннотация</h2>
-    <p>
-        Это учебный проект, в котором реализован простой ray tracer на Java.
-        Программа строит изображение с помощью трассировки лучей.
-    </p>
+  <div class="label">Московский Политех · ITE Group</div>
+  <h1>Лаборатория успеха</h1>
+  <p class="subtitle">Проект по разработке настольной экономической игры как инструмента геймификации в дополнительном образовании кадров.</p>
 
-    <img src="../images/final.png" alt="Render result">
+  <hr />
+
+  <h2>Аннотация</h2>
+  <p>Геймификация — один из наиболее эффективных методов мотивации к профессиональному развитию. Несмотря на это, качественных игровых решений для обучения управленческим, экономическим и коммуникационным навыкам по-прежнему мало.</p>
+  <p>В рамках проекта «Лаборатория успеха» студенты Московского Политеха совместно с заказчиком ITE Group разработали прототип настольной экономической игры. Игра основана на механике расстановки рабочих и зданий и направлена на развитие стратегического мышления, управления ресурсами и навыков планирования.</p>
+  <p>Основная цель игры — построить успешную компанию, конкурируя с другими игроками за локации, ресурсы и карты-события.</p>
+
+  <hr />
+
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:8px;">
+    <div class="card" style="text-align:center;">
+      <div style="font-size:28px; font-weight:700; color:var(--accent);">19</div>
+      <div style="font-size:12px; color:var(--muted); margin-top:4px;">участников</div>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-size:28px; font-weight:700; color:var(--accent);">11</div>
+      <div style="font-size:12px; color:var(--muted); margin-top:4px;">закрытых задач</div>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-size:28px; font-weight:700; color:var(--accent);">3.8</div>
+      <div style="font-size:12px; color:var(--muted); margin-top:4px;">оценка ЦА / 5</div>
+    </div>
+  </div>
 </main>
 
 <footer>
-    <p>© 2026 Ray Tracer Project</p>
+  <p>© 2026 Лаборатория успеха · Московский Политех · Куратор: Анохина Е.А. · Заказчик: ITE Group</p>
 </footer>
 
 </body>
