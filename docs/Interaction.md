@@ -27,5 +27,5 @@
 
 |Фотографии||
 |:-:|:-:|
-|![фото](image-md/inter1.jpg)|![фото](image-md/inter2.jpg)|
-|![фото](image-md/inter3.jpg)|![фото](image-md/inter4.jpg)|
+|![фото](photo_2026-05-21_21-50-17.jpg)|![фото](image-md/inter2.jpg)|
+
