@@ -7,3 +7,4 @@ public class Light {
         this.intensity = intensity;
     }
 }
+ 
