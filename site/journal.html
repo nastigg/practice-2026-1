@@ -1,33 +1,102 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Журнал</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Журнал — Лаборатория успеха</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header> 
-    <h1>Ray Tracer Project</h1>
-    <nav>
-        <a href="index.html">Главная</a>
-        <a href="about.html">О проекте</a>
-        <a href="team.html">Участники</a>
-        <a href="journal.html">Журнал</a>
-        <a href="resources.html">Ресурсы</a>
-    </nav>
-</header>
+<nav>
+  <a class="nav-logo" href="index.html">Лаборатория <span>успеха</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="about.html">О проекте</a></li>
+    <li><a href="team.html">Участники</a></li>
+    <li><a href="journal.html" class="active">Журнал</a></li>
+    <li><a href="resources.html">Ресурсы</a></li>
+  </ul>
+</nav>
 
 <main>
-    <h2>Журнал</h2>
+  <div class="label">Журнал разработки</div>
+  <h1>Этапы работы</h1>
+  <p class="subtitle">Хроника создания игры — от первой идеи до готового прототипа.</p>
 
-    <p><b>День 1:</b> написан базовый код</p>
-    <p><b>День 2:</b> добавлена сфера</p>
-    <p><b>День 3:</b> получено изображение</p>
+  <ul class="timeline">
+
+    <li class="timeline-item">
+      <div class="timeline-date">Февраль 2026</div>
+      <div class="timeline-title">Анализ текущей версии проекта</div>
+      <div class="timeline-desc">Команда провела ревизию наработок предыдущего семестра: оценила состояние механик, визуала и документации, определила слабые места и приоритеты для следующего этапа.</div>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-date">Февраль 2026</div>
+      <div class="timeline-title">Новый визуальный стиль</div>
+      <div class="timeline-desc">Художники разработали обновлённую концепцию оформления — фэнтезийно-стимпанк эстетика с детализированными картами, полем и фишками. Согласован единый стиль для всех элементов.</div>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-date">Февраль 2026</div>
+      <div class="timeline-title">Онлайн-формат игры</div>
+      <div class="timeline-desc">Операторы реализовали цифровую версию прототипа для удалённого тестирования. Это позволило проводить сессии без физического присутствия всех участников.</div>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-date">Март 2026</div>
+      <div class="timeline-title">Переработка игровых механик</div>
+      <div class="timeline-desc">Механики пересмотрели баланс экономики, скорректировали математику расчётов дохода, добавили новые варианты карт-событий и переработали механику старта игры.</div>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-date">Март 2026</div>
+      <div class="timeline-title">Наполнение контентом</div>
+      <div class="timeline-desc">Художники заполнили колоды карт, оформили игровое поле в финальном стиле, создали иконки ресурсов, уровней и символов гильдий.</div>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-date">24 марта 2026</div>
+      <div class="timeline-title">Промежуточная аттестация</div>
+      <div class="timeline-desc">Команда представила промежуточный продуктовый результат куратору и заказчику. Получены замечания и рекомендации по дальнейшему развитию.</div>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-date">Апрель 2026</div>
+      <div class="timeline-title">Создание визуального наполнения</div>
+      <div class="timeline-desc">Масштабная работа художников: финальные иллюстрации для всех карт, детализация персонажей и локаций, подготовка к печати прототипа.</div>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-date">Апрель 2026</div>
+      <div class="timeline-title">Тестирование и апробация</div>
+      <div class="timeline-desc">Проведены тестовые партии внутри команды и с представителем заказчика. Игроки отметили вовлечённость и необходимость стратегического планирования. Замечания зафиксированы и переданы в работу.</div>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-date">Апрель — май 2026</div>
+      <div class="timeline-title">Анализ результатов и финальные правки</div>
+      <div class="timeline-desc">На основе тестирований скорректированы правила, добавлены новые карты-события, обновлён онлайн-формат. Проведён финальный баланс игровой экономики.</div>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-date">19 мая 2026</div>
+      <div class="timeline-title">Промежуточная аттестация</div>
+      <div class="timeline-desc">Представление актуального состояния проекта куратору. Подготовлены материалы для итоговой защиты.</div>
+    </li>
+
+    <li class="timeline-item">
+      <div class="timeline-date">25 мая 2026</div>
+      <div class="timeline-title">Итоговая аттестация</div>
+      <div class="timeline-desc">Финальная презентация прототипа игры заказчику и комиссии. Демонстрация всех реализованных механик и визуального оформления.</div>
+    </li>
+
+  </ul>
 </main>
 
 <footer>
-    <p>© 2026 Ray Tracer Project</p>
+  <p>© 2026 Лаборатория успеха · Московский Политех · Куратор: Анохина Е.А. · Заказчик: ITE Group</p>
 </footer>
 
 </body>
